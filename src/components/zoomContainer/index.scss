@@ -1,0 +1,94 @@
+.points-list {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 500px;
+    transform: translate(-50%, -50%);
+    .point-item {
+        position: absolute;
+        display: flex;
+        span {
+            visibility: hidden;
+            opacity: 0;
+            transition: .15s ease-in-out;
+            text-transform: uppercase;
+            font-size: 12px;
+            color: #fff;
+            margin-bottom: 1rem;
+            white-space: nowrap;
+        }
+    }  
+    .point-image {
+        width: 20px;
+        height: 20px;
+        background-color: white;
+        border-radius: 50%;
+        position: absolute;
+        top: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 1px solid white;
+        border-radius: 50%;
+        transition: .5s ease-in-out;
+        cursor: default;
+        img {
+            opacity: 0;
+            visibility: hidden;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        &:before {
+            content: '';
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 50%;
+            border: 1px solid white;
+            animation: floatBorder 2s infinite;
+            animation-fill-mode: both;
+        }
+    }
+
+    &.active {
+        .point-item {
+        }
+        span {
+            opacity: 1;
+            visibility: visible;
+        }
+        .point-image {
+            cursor: pointer;
+            &:hover {
+                transform: scale(5);
+                img {
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
+        }
+    }
+}
+
+.point-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+    color: #fff;
+    &.active {
+        animation: moveTextUp .75s linear;
+        animation-fill-mode: both;
+    }
+    &.deactive {
+        animation: floatOut .15s linear;
+        animation-fill-mode: both; 
+    }
+}
